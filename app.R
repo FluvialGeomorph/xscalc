@@ -8,22 +8,21 @@
 #
 
 library(shiny)
+library(bslib)
 library(leaflet)
 library(mapedit)
 library(leafpm)
 library(sf)
 
 # Define UI for application that draws a histogram
-ui <- fluidPage(
-
-  titlePanel("Shinylive Leaflet Mapedit"),
+ui <- page_sidebar(
+  title = "Shinylive Leaflet Mapedit",
+  editModUI(id = "xs"), 
   
-  sidebarLayout(
-    position = "right",
-    sidebarPanel(actionButton('calc_xs', 'Calculate XS')),
-    mainPanel(editModUI(id = "xs", 
-                        height = "90vh"))
-  )
+  sidebar = sidebar(
+      position = "right",
+      actionButton('calc_xs', 'Calculate XS')
+      ),
 )
 
 # Define server logic required to draw a histogram
