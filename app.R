@@ -21,7 +21,8 @@ ui <- fluidPage(
   sidebarLayout(
     position = "right",
     sidebarPanel(actionButton('calc_xs', 'Calculate XS')),
-    mainPanel(editModUI(id = "xs"))
+    mainPanel(editModUI(id = "xs", 
+                        height = "90vh"))
   )
 )
 
@@ -49,7 +50,7 @@ server <- function(input, output) {
   observeEvent(input$calc_xs, {
     xs <- draw_xs()$finished
     assign('xs', xs, envir = .GlobalEnv)
-    sf::write_sf(xs, 'xs.geojson', delete_layer = TRUE, delete_dsn = TRUE)
+    #sf::write_sf(xs, 'xs.geojson', delete_layer = TRUE, delete_dsn = TRUE)
     
   })
 }
